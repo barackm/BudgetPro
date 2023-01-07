@@ -18,6 +18,7 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Screen} from './src/components/Screen/Screen';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,12 +28,9 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-    </SafeAreaView>
+    <Screen>
+      <Text>Hello World</Text>
+    </Screen>
   );
 };
 
