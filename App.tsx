@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Screen} from './src/components/Screen/Screen';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,6 +31,7 @@ const App = () => {
   return (
     <Screen>
       <Text>Hello World</Text>
+      <MaterialCommunityIcons name="home" size={30} color="red" />
     </Screen>
   );
 };
