@@ -1,12 +1,25 @@
 import React from 'react';
-import {Text} from 'react-native';
+import Button from './src/components/Screen/common/button/Button';
 import {Screen} from './src/components/Screen/Screen';
-import {fonts} from './src/theme';
+import {colors, metrics} from './src/theme';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const App = () => {
   return (
     <Screen>
-      <Text style={fonts.body}>Hello World</Text>
+      <Button
+        label="Login to your account"
+        onPress={() => {}}
+        variant="contained"
+        color={colors.primary}
+        startIcon={
+          <MaterialCommunityIcons
+            name="account"
+            size={metrics.moderateScale(20)}
+            color={colors.light}
+          />
+        }
+      />
     </Screen>
   );
 };

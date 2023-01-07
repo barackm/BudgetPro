@@ -1,9 +1,10 @@
 import {Platform, StyleSheet} from 'react-native';
 import {colors} from './colors';
+import {metrics} from './metrics';
 
 export const fonts = StyleSheet.create({
   heading: {
-    fontSize: 24,
+    fontSize: metrics.moderateScale(24),
     fontWeight: 'bold',
     fontFamily: Platform.select({
       ios: 'Helvetica Neue',
@@ -13,7 +14,7 @@ export const fonts = StyleSheet.create({
   },
 
   subHeading: {
-    fontSize: 18,
+    fontSize: metrics.moderateScale(18),
     fontWeight: '600',
     fontFamily: Platform.select({
       ios: 'Helvetica Neue',
@@ -22,7 +23,7 @@ export const fonts = StyleSheet.create({
     color: colors.darkLight,
   },
   body: {
-    fontSize: 16,
+    fontSize: metrics.moderateScale(14),
     fontWeight: '400',
     fontFamily: Platform.select({
       ios: 'Helvetica Neue',
@@ -31,7 +32,7 @@ export const fonts = StyleSheet.create({
     color: colors.darkLight,
   },
   caption: {
-    fontSize: 12,
+    fontSize: metrics.moderateScale(12),
     fontWeight: '400',
     fontFamily: Platform.select({
       ios: 'Helvetica Neue',
