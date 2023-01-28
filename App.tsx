@@ -91,6 +91,7 @@ const App = () => {
             )}
             variant="outlined"
             onPress={() => console.log('Pressed')}
+            // loading
           />
         </View>
       </Screen>

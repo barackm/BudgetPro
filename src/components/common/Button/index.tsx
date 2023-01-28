@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { useButtonVariantBasedStyles } from '../../../hooks/useButtonVariantBasedStyles';
 import useTheme from '../../../hooks/useTheme';
-import { colors } from '../../../theme';
+import { colors, metrics } from '../../../theme';
 import { IButton } from '../../../types/button';
 
 import styles from './styles';
@@ -46,7 +46,13 @@ const Button: React.FC<IButton> = props => {
         ...ButtonStyles[variant],
         ...ButtonStyles.root,
         ...buttonStyles,
-        ...((autoWidth || renderIconBtn) && { alignSelf: 'flex-start' }),
+        ...((autoWidth || renderIconBtn) && {
+          alignSelf: 'flex-start',
+        }),
+        ...(renderIconBtn &&
+          loading && {
+            paddingHorizontal: metrics.moderateScale(10),
+          }),
         ...stylesProp,
       }}>
       {(startIcon || loading) && !renderIconBtn && (
