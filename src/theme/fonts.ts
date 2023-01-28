@@ -12,7 +12,6 @@ export const fonts = StyleSheet.create({
     }),
     color: colors.dark,
   },
-
   subHeading: {
     fontSize: metrics.moderateScale(18),
     fontWeight: '600',
@@ -39,6 +38,12 @@ export const fonts = StyleSheet.create({
       android: 'Roboto',
     }),
     color: colors.dark,
+  },
+  defaultTextStyle: {
+    fontFamily: Platform.select({
+      ios: 'Helvetica Neue',
+      android: 'Roboto',
+    }),
   },
 
   bold: {

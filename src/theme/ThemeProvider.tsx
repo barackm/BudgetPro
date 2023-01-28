@@ -60,10 +60,21 @@ const palette = {
     dark: colors.disabledDark,
     contrastText: colors.disabledDark,
   },
+  error: {
+    main: colors.error,
+    light: colors.errorLight,
+    dark: colors.errorDark,
+    contrastText: colors.white,
+  },
+  text: {
+    main: colors.text,
+    light: colors.textLight,
+    dark: colors.textDark,
+  },
 };
 
 const ButtonRoot = {
-  borderRadius: metrics.moderateScale(8),
+  borderRadius: metrics.moderateScale(10),
   paddingHorizontal: metrics.moderateScale(20),
   display: 'flex',
   alignItems: 'center',
@@ -102,6 +113,35 @@ const defaultTheme: ITheme = {
         fontWeight: fonts.subHeading.fontWeight,
         textTransform: 'capitalize',
         marginHorizontal: metrics.moderateScale(5),
+      },
+    },
+    TextInput: {
+      root: {
+        display: 'flex',
+        marginVertical: metrics.moderateScale(10),
+      },
+      input: {
+        ...fonts.defaultTextStyle,
+        display: 'flex',
+        flexDirection: 'row',
+        flex: 1,
+        fontSize: metrics.moderateScale(12),
+      },
+      inputContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+        paddingHorizontal: metrics.moderateScale(16),
+        borderWidth: metrics.moderateScale(1.2),
+        borderColor: colors.disabled,
+        borderRadius: metrics.moderateScale(10),
+        height: metrics.moderateScale(36),
+      },
+      label: {
+        ...fonts.caption,
+        fontSize: metrics.moderateScale(12),
+        marginBottom: metrics.moderateScale(4),
+        ...fonts.defaultTextStyle,
       },
     },
   },

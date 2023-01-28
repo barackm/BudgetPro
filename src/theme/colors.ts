@@ -7,6 +7,7 @@ const textLight = '#777777';
 const textInverted = '#ffffff';
 const white = '#ffffff';
 const dark = '#000000';
+const error = '#ff5555';
 
 export const colors = {
   primary,
@@ -24,7 +25,12 @@ export const colors = {
   disabledDark: Color(disabled).darken(0.2).hex(),
   text,
   textLight,
+  textDark: Color(text).darken(0.2).hex(),
   textInverted,
   white,
   dark,
+  error,
+  errorLight: Color(error).lighten(0.2).hex(),
+  errorDark: Color(error).darken(0.2).hex(),
+  eroorVariant: Color(error).rotate(20).hex(),
 };

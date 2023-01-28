@@ -3,6 +3,7 @@ import { Screen } from './src/components/Screen/Screen';
 import Button from './src/components/common/Button';
 import { createTheme, ThemeProvider } from './src/theme/ThemeProvider';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import TextInput from './src/components/common/TextInput';
 
 const App = () => {
   const theme = createTheme({
@@ -31,6 +32,14 @@ const App = () => {
           onPress={() => console.log('Pressed')}>
           Content
         </Button>
+        <TextInput placeholder="Enter Email" label="Email" />
+        <TextInput
+          placeholder="Enter Password"
+          secureTextEntry
+          label="Password"
+          disabled
+          error="Error"
+        />
       </Screen>
     </ThemeProvider>
   );
