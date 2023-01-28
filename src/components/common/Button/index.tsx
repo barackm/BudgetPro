@@ -38,6 +38,8 @@ const Button: React.FC<IButton> = props => {
         }
       }}
       disabled={disabled || loading}
+      // reduce the opacity of the button when clicked
+      activeOpacity={0.8}
       style={{
         ...ButtonStyles[variant],
         ...ButtonStyles.root,

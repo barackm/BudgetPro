@@ -67,7 +67,7 @@ const ButtonRoot = {
   paddingHorizontal: metrics.moderateScale(20),
   display: 'flex',
   alignItems: 'center',
-  height: metrics.moderateScale(34),
+  height: metrics.moderateScale(36),
   justifyContent: 'center',
   flexDirection: 'row',
   color: colors.textLight,
