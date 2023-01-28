@@ -4,11 +4,14 @@ import Button from './src/components/common/Button';
 import { createTheme, ThemeProvider } from './src/theme/ThemeProvider';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import TextInput from './src/components/common/TextInput';
+// import { View } from 'react-native';
 
 const App = () => {
   const theme = createTheme({
     palette: {
-      primary: {},
+      primary: {
+        // main: '#2cb9b0',
+      },
     },
     components: {
       Button: {
@@ -39,18 +42,18 @@ const App = () => {
             <AntDesign name="lock" size={size} color={color} />
           )}
         />
-        {/* <TextInput
+        <TextInput
           placeholder="Enter message"
           label="Message"
           numberOfLines={10}
           multiline
-          error="Invalid password"
-        /> */}
+          // error="Invalid password"
+        />
         <Button variant="contained" onPress={() => console.log('Pressed')}>
-          Login
+          LOGIN
         </Button>
         <Button variant="outlined" onPress={() => console.log('Pressed')}>
-          Sign Up
+          SIGN UP
         </Button>
       </Screen>
     </ThemeProvider>

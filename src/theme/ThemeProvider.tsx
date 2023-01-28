@@ -82,8 +82,9 @@ const ButtonRoot = {
   justifyContent: 'center',
   flexDirection: 'row',
   color: colors.textLight,
-  borderWidth: metrics.moderateScale(1.2),
+  borderWidth: metrics.moderateScale(1.1),
   marginVertical: metrics.moderateScale(5),
+  // flex: 1,
 };
 
 const defaultTheme: ITheme = {
@@ -112,7 +113,6 @@ const defaultTheme: ITheme = {
         color: colors.white,
         fontSize: metrics.moderateScale(12),
         fontWeight: fonts.subHeading.fontWeight,
-        textTransform: 'capitalize',
         marginHorizontal: metrics.moderateScale(5),
       },
     },
@@ -134,7 +134,7 @@ const defaultTheme: ITheme = {
         alignItems: 'center',
         flexDirection: 'row',
         paddingHorizontal: metrics.moderateScale(12),
-        borderWidth: metrics.moderateScale(1.2),
+        borderWidth: metrics.moderateScale(1.1),
         borderColor: colors.disabled,
         borderRadius: metrics.moderateScale(12),
         minHeight: metrics.moderateScale(36),

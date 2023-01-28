@@ -18,6 +18,7 @@ const Button: React.FC<IButton> = props => {
     variant = 'contained',
     color = 'primary',
     disabled = false,
+    autoWidth = false,
   } = props;
   const theme = useTheme();
   const { components } = theme;
@@ -38,12 +39,12 @@ const Button: React.FC<IButton> = props => {
         }
       }}
       disabled={disabled || loading}
-      // reduce the opacity of the button when clicked
       activeOpacity={0.8}
       style={{
         ...ButtonStyles[variant],
         ...ButtonStyles.root,
         ...buttonStyles,
+        ...(autoWidth && { alignSelf: 'flex-start' }),
       }}>
       {(startIcon || loading) && (
         <View style={styles.iconContainer}>

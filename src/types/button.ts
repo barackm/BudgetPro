@@ -11,6 +11,7 @@ export interface IButton {
   fullWidth?: boolean;
   children?: React.ReactNode;
   loading?: boolean;
+  autoWidth?: boolean;
 }
 
 export type IconProps = {
