@@ -1,9 +1,8 @@
 import React from 'react';
 import { Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { useButtonVariantBasedStyles } from '../../../hooks/useButtonVariantBasedStyles';
-import useTheme from '../../../hooks/useTheme';
 import { colors } from '../../../theme';
-import { EButtonVariant, IButton } from '../../../types/button';
+import { IButton } from '../../../types/button';
 
 import styles from './styles';
 
@@ -17,17 +16,23 @@ const Button: React.FC<IButton> = props => {
     loading,
     variant = 'contained',
     color = 'primary',
+    disabled = false,
   } = props;
-  const theme = useTheme();
-  const { palette = {} } = theme;
-  const { buttonStyles, textStyles } = useButtonVariantBasedStyles(
+  const { buttonStyles, textStyles, iconStyles } = useButtonVariantBasedStyles({
     variant,
-    color,
-  );
+    color: disabled ? 'disabled' : color,
+    disabled,
+    loading: loading || false,
+  });
 
   return (
     <TouchableOpacity
-      onPress={onPress}
+      onPress={() => {
+        if (!disabled || loading) {
+          onPress();
+        }
+      }}
+      disabled={disabled || loading}
       style={{
         ...buttonStyles,
       }}>
@@ -35,14 +40,14 @@ const Button: React.FC<IButton> = props => {
         <View style={styles.iconContainer}>
           {loading ? (
             <ActivityIndicator
-              size="small"
-              color={
-                variant === EButtonVariant.contained
-                  ? colors.white
-                  : palette[color as keyof typeof palette]?.main ||
-                    colors.primary
-              }
+              size={iconStyles.size}
+              color={iconStyles.color}
             />
+          ) : typeof startIcon === 'function' ? (
+            startIcon({
+              color: iconStyles.color || colors.white,
+              size: iconStyles.size,
+            })
           ) : (
             startIcon
           )}
@@ -55,7 +60,16 @@ const Button: React.FC<IButton> = props => {
         numberOfLines={1}>
         {label || children}
       </Text>
-      {endIcon && <View>{endIcon}</View>}
+      {endIcon && (
+        <View>
+          {typeof endIcon === 'function'
+            ? endIcon({
+                color: iconStyles.color || colors.white,
+                size: iconStyles.size,
+              })
+            : endIcon}
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

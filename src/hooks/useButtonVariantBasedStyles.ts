@@ -1,7 +1,20 @@
+import { metrics } from './../theme/metrics';
 import { EButtonVariant } from '../types/button';
 import useTheme from './useTheme';
+import { colors } from '../theme';
 
-export const useButtonVariantBasedStyles = (variant: string, color: string) => {
+interface Props {
+  variant: 'outlined' | 'contained' | 'text';
+  color: string;
+  disabled: boolean;
+  loading: boolean;
+}
+export const useButtonVariantBasedStyles = ({
+  variant,
+  color,
+  loading,
+  disabled,
+}: Props) => {
   const theme = useTheme();
   const { palette = {}, components } = theme;
   const { Button: ButtonStyles } = components;
@@ -10,18 +23,25 @@ export const useButtonVariantBasedStyles = (variant: string, color: string) => {
     [EButtonVariant.outlined]: {
       ...ButtonStyles.outlined,
       backgroundColor: 'transparent',
-      color: palette[color as keyof typeof palette]?.main,
-      borderColor: palette[color as keyof typeof palette]?.main,
+      color: palette[color as keyof typeof palette]?.contrastText,
+      borderColor: disabled
+        ? palette[color as keyof typeof palette]?.dark
+        : palette[color as keyof typeof palette]?.main,
+      opacity: loading ? 0.8 : 1,
     },
     [EButtonVariant.contained]: {
       ...ButtonStyles.contained,
-      backgroundColor: palette[color as keyof typeof palette]?.main,
+      backgroundColor: disabled
+        ? palette[color as keyof typeof palette]?.light
+        : palette[color as keyof typeof palette]?.main,
       color: palette[color as keyof typeof palette]?.contrastText,
       borderColor: 'transparent',
+      opacity: loading ? 0.8 : 1,
     },
     [EButtonVariant.text]: {
       ...ButtonStyles.text,
       backgroundColor: 'transparent',
+      opacity: loading ? 0.8 : 1,
     },
   };
 
@@ -40,21 +60,18 @@ export const useButtonVariantBasedStyles = (variant: string, color: string) => {
     },
   };
 
-  const iconStylesCases = {
-    [EButtonVariant.outlined]: {
-      color: palette[color as keyof typeof palette]?.main,
-    },
-    [EButtonVariant.contained]: {
-      color: palette[color as keyof typeof palette]?.contrastText,
-    },
-    [EButtonVariant.text]: {
-      color: palette[color as keyof typeof palette]?.main,
-    },
-  };
+  const iconColor = disabled
+    ? palette[color as keyof typeof palette]?.contrastText
+    : variant === EButtonVariant.contained
+    ? colors.white
+    : palette[color as keyof typeof palette]?.main || colors.primary;
 
   return {
     buttonStyles: cases[variant as keyof typeof cases] || {},
     textStyles: textStylesCases[variant as keyof typeof textStylesCases] || {},
-    iconStyles: iconStylesCases[variant as keyof typeof iconStylesCases] || {},
+    iconStyles: {
+      color: iconColor,
+      size: metrics.moderateScale(15),
+    },
   };
 };

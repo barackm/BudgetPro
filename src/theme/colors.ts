@@ -1,7 +1,7 @@
 import Color from 'color';
 const primary = '#5538ee';
 const secondary = '#e7e7ff';
-const disabled = '#dadee0';
+const disabled = '#c1c4c9';
 const text = '#333333';
 const textLight = '#777777';
 const textInverted = '#ffffff';
@@ -20,6 +20,8 @@ export const colors = {
   secondaryDark: Color(secondary).darken(0.2).hex(),
   secondaryVariant: Color(secondary).rotate(20).hex(),
   disabled,
+  disabledLight: Color(disabled).lighten(0.2).hex(),
+  disabledDark: Color(disabled).darken(0.2).hex(),
   text,
   textLight,
   textInverted,

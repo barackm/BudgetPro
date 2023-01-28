@@ -20,7 +20,7 @@ interface IThemeProviderProps {
 export const ThemeProvider = (props: IThemeProviderProps) => {
   const { theme, children } = props;
   return (
-    <ThemeContext.Provider value={{ theme: createTheme(theme) }}>
+    <ThemeContext.Provider value={{ theme: theme || defaultTheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -31,7 +31,7 @@ export const createTheme = (customTheme?: ITheme) => {
     return defaultTheme;
   }
 
-  const _theme = _.merge(
+  const theme = _.mergeWith(
     {},
     defaultTheme,
     customTheme,
@@ -39,10 +39,12 @@ export const createTheme = (customTheme?: ITheme) => {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
       }
+      if (_.isPlainObject(objValue) && _.isPlainObject(srcValue)) {
+        return _.mergeWith(objValue, srcValue);
+      }
     },
   );
-
-  return _theme;
+  return theme;
 };
 
 const palette = {
@@ -51,6 +53,12 @@ const palette = {
     light: colors.primaryLight,
     dark: colors.primaryDark,
     contrastText: colors.white,
+  },
+  disabled: {
+    main: colors.disabled,
+    light: colors.disabledLight,
+    dark: colors.disabledDark,
+    contrastText: colors.disabledDark,
   },
 };
 

@@ -6,6 +6,7 @@ export interface ITheme {
     warning?: Icolor;
     info?: Icolor;
     success?: Icolor;
+    disabled?: Icolor;
   };
   components?: any;
 }

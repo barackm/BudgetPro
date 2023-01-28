@@ -1,8 +1,8 @@
 export interface IButton {
   label?: string;
   onPress: () => void;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  startIcon?: ({ color, size }: IconProps) => React.ReactNode | React.ReactNode;
+  endIcon?: ({ color, size }: IconProps) => React.ReactNode | React.ReactNode;
   disabled?: boolean;
   styles?: any;
   variant?: 'outlined' | 'contained' | 'text';
@@ -12,6 +12,11 @@ export interface IButton {
   children?: React.ReactNode;
   loading?: boolean;
 }
+
+type IconProps = {
+  color: string;
+  size: number;
+};
 
 export enum EButtonVariant {
   outlined = 'outlined',
