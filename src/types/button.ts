@@ -13,7 +13,7 @@ export interface IButton {
   loading?: boolean;
 }
 
-export enum ButtonVariant {
+export enum EButtonVariant {
   outlined = 'outlined',
   contained = 'contained',
   text = 'text',

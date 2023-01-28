@@ -93,6 +93,7 @@ const defaultTheme: ITheme = {
         fontSize: metrics.moderateScale(12),
         fontWeight: fonts.subHeading.fontWeight,
         textTransform: 'capitalize',
+        marginHorizontal: metrics.moderateScale(5),
       },
     },
   },

@@ -9,7 +9,10 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Screen>
-        <Button variant="outlined" onPress={() => console.log('Pressed')}>
+        <Button
+          variant="contained"
+          onPress={() => console.log('Pressed')}
+          loading>
           Content
         </Button>
       </Screen>
