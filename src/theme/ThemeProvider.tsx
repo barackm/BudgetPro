@@ -147,7 +147,7 @@ const defaultTheme: ITheme = {
     },
     Switch: {
       root: {
-        width: metrics.moderateScale(40),
+        width: metrics.moderateScale(38),
         height: metrics.moderateScale(22),
         borderRadius: metrics.moderateScale(30),
         justifyContent: 'center',

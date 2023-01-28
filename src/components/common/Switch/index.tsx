@@ -26,7 +26,7 @@ const Switch: React.FC<ISwitch> = props => {
 
   useEffect(() => {
     if (value) {
-      switchTranslate.value = metrics.moderateScale(20);
+      switchTranslate.value = metrics.moderateScale(18);
     } else {
       switchTranslate.value = metrics.moderateScale(2);
     }
