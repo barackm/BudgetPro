@@ -74,7 +74,7 @@ const palette = {
 };
 
 const ButtonRoot = {
-  borderRadius: metrics.moderateScale(10),
+  borderRadius: metrics.moderateScale(12),
   paddingHorizontal: metrics.moderateScale(20),
   display: 'flex',
   alignItems: 'center',
@@ -82,7 +82,8 @@ const ButtonRoot = {
   justifyContent: 'center',
   flexDirection: 'row',
   color: colors.textLight,
-  borderWidth: metrics.moderateScale(1.5),
+  borderWidth: metrics.moderateScale(1.2),
+  marginVertical: metrics.moderateScale(5),
 };
 
 const defaultTheme: ITheme = {
@@ -118,7 +119,7 @@ const defaultTheme: ITheme = {
     TextInput: {
       root: {
         display: 'flex',
-        marginVertical: metrics.moderateScale(10),
+        marginVertical: metrics.moderateScale(5),
       },
       input: {
         ...fonts.defaultTextStyle,
@@ -126,16 +127,17 @@ const defaultTheme: ITheme = {
         flexDirection: 'row',
         flex: 1,
         fontSize: metrics.moderateScale(12),
+        paddingVertical: metrics.moderateScale(5),
       },
       inputContainer: {
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'row',
-        paddingHorizontal: metrics.moderateScale(16),
+        paddingHorizontal: metrics.moderateScale(12),
         borderWidth: metrics.moderateScale(1.2),
         borderColor: colors.disabled,
-        borderRadius: metrics.moderateScale(10),
-        height: metrics.moderateScale(36),
+        borderRadius: metrics.moderateScale(12),
+        minHeight: metrics.moderateScale(36),
       },
       label: {
         ...fonts.caption,

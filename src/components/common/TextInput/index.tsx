@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
   Text,
   View,
@@ -10,6 +11,7 @@ import { ITextInput } from '../../../types/textInput';
 import { getIconSize } from '../../../utlis/icons';
 import useInputStyles from '../../../hooks/useInputStyles';
 import useTheme from '../../../hooks/useTheme';
+import styles from './styles';
 
 const TextInput: React.FC<ITextInput> = props => {
   const {
@@ -37,13 +39,20 @@ const TextInput: React.FC<ITextInput> = props => {
   const { TextInput: TextInputStyles } = components;
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const { mainContainerStyles, inputContainerStyles, iconStyles } =
-    useInputStyles({
-      color,
-      disabled,
-      error,
-      isFocused,
-    });
+  const {
+    mainContainerStyles,
+    inputContainerStyles,
+    iconStyles,
+    errorMessageStyles,
+    inputStyles,
+  } = useInputStyles({
+    color,
+    disabled,
+    error,
+    isFocused,
+    multiline,
+    numberOfLines,
+  });
 
   useEffect(() => {
     setShouldSecureTextEntry(secureTextEntry || false);
@@ -70,11 +79,15 @@ const TextInput: React.FC<ITextInput> = props => {
           ...inputContainerStyles,
         }}>
         {startIcon && (
-          <View>
+          <View
+            style={{
+              ...styles.iconContainer,
+              ...styles.startIcon,
+            }}>
             {typeof startIcon === 'function'
               ? startIcon({
-                  size: getIconSize(),
-                  color: 'black',
+                  size: iconStyles.size,
+                  color: iconStyles.color || 'black',
                 })
               : startIcon}
           </View>
@@ -96,20 +109,29 @@ const TextInput: React.FC<ITextInput> = props => {
           value={value}
           style={{
             ...TextInputStyles.input,
+            ...inputStyles,
           }}
           multiline={multiline}
           numberOfLines={numberOfLines}
           editable={!disabled}
         />
 
-        {endIcon && (
-          <View>
-            {typeof endIcon === 'function'
-              ? endIcon({
-                  size: getIconSize(),
-                  color: 'black',
-                })
-              : endIcon}
+        {(endIcon || error) && (
+          <View style={styles.iconContainer}>
+            {error ? (
+              <MaterialIcons
+                name="error-outline"
+                size={iconStyles.size}
+                color={errorMessageStyles.color}
+              />
+            ) : typeof endIcon === 'function' ? (
+              endIcon({
+                size: getIconSize(),
+                color: 'black',
+              })
+            ) : (
+              endIcon
+            )}
           </View>
         )}
         {secureTextEntry && (
@@ -118,20 +140,28 @@ const TextInput: React.FC<ITextInput> = props => {
             onPress={() => setShouldSecureTextEntry((prev: boolean) => !prev)}>
             {shouldSecureTextEntry ? (
               <Ionicons
-                name="eye-off"
-                size={getIconSize()}
+                name="ios-eye-off-outline"
+                size={iconStyles.size}
                 color={iconStyles.color}
               />
             ) : (
               <Ionicons
-                name="eye"
-                size={getIconSize()}
+                name="ios-eye-outline"
+                size={iconStyles.size}
                 color={iconStyles.color}
               />
             )}
           </TouchableOpacity>
         )}
       </View>
+      {error && (
+        <Text
+          style={{
+            ...errorMessageStyles,
+          }}>
+          {error}
+        </Text>
+      )}
     </View>
   );
 };

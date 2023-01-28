@@ -1,4 +1,4 @@
-import { colors, metrics } from '../theme';
+import { colors, fonts, metrics } from '../theme';
 import useTheme from './useTheme';
 
 interface Props {
@@ -6,8 +6,17 @@ interface Props {
   disabled?: boolean;
   error?: string | null;
   isFocused?: boolean;
+  multiline?: boolean;
+  numberOfLines?: number;
 }
-const useInputStyles = ({ color, disabled, error, isFocused }: Props) => {
+const useInputStyles = ({
+  color,
+  disabled,
+  error,
+  isFocused,
+  multiline,
+  numberOfLines = 1,
+}: Props) => {
   const theme = useTheme();
   const { palette = {} } = theme;
 
@@ -33,10 +42,17 @@ const useInputStyles = ({ color, disabled, error, isFocused }: Props) => {
       ...(disabled && inputContainerStylesCases.disabled),
       ...(error && inputContainerStylesCases.error),
     },
-    inputStyles: {},
+    inputStyles: {
+      height: multiline ? metrics.moderateScale(10 * numberOfLines) : null,
+    },
     iconStyles: {
       color: iconColor,
-      size: metrics.moderateScale(10),
+      size: metrics.moderateScale(16),
+    },
+    errorMessageStyles: {
+      ...fonts.defaultTextStyle,
+      color: palette['error' as keyof typeof palette]?.main,
+      fontSize: metrics.moderateScale(10),
     },
   };
 };

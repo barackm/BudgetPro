@@ -22,24 +22,36 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Screen>
-        <Button
+        <TextInput
           startIcon={({ color, size }) => (
             <AntDesign name="user" size={size} color={color} />
           )}
-          variant="contained"
-          // disabled
-          // loading
-          onPress={() => console.log('Pressed')}>
-          Content
-        </Button>
-        <TextInput placeholder="Enter Email" label="Email" />
+          placeholder="Enter Email"
+          label="Email"
+        />
         <TextInput
           placeholder="Enter Password"
           secureTextEntry
           label="Password"
-          disabled
-          error="Error"
+          // error="Invalid password"
+          // disabled
+          startIcon={({ color, size }) => (
+            <AntDesign name="lock" size={size} color={color} />
+          )}
         />
+        {/* <TextInput
+          placeholder="Enter message"
+          label="Message"
+          numberOfLines={10}
+          multiline
+          error="Invalid password"
+        /> */}
+        <Button variant="contained" onPress={() => console.log('Pressed')}>
+          Login
+        </Button>
+        <Button variant="outlined" onPress={() => console.log('Pressed')}>
+          Sign Up
+        </Button>
       </Screen>
     </ThemeProvider>
   );
