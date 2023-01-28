@@ -19,6 +19,8 @@ const Button: React.FC<IButton> = props => {
     color = 'primary',
     disabled = false,
     autoWidth = false,
+    renderIconBtn,
+    styles: stylesProp = {},
   } = props;
   const theme = useTheme();
   const { components } = theme;
@@ -44,9 +46,10 @@ const Button: React.FC<IButton> = props => {
         ...ButtonStyles[variant],
         ...ButtonStyles.root,
         ...buttonStyles,
-        ...(autoWidth && { alignSelf: 'flex-start' }),
+        ...((autoWidth || renderIconBtn) && { alignSelf: 'flex-start' }),
+        ...stylesProp,
       }}>
-      {(startIcon || loading) && (
+      {(startIcon || loading) && !renderIconBtn && (
         <View style={styles.iconContainer}>
           {loading ? (
             <ActivityIndicator
@@ -63,14 +66,25 @@ const Button: React.FC<IButton> = props => {
           )}
         </View>
       )}
-      <Text
-        style={{
-          ...textStyles,
-        }}
-        numberOfLines={1}>
-        {label || children}
-      </Text>
-      {endIcon && (
+      {loading ? (
+        <View style={styles.iconContainer}>
+          <ActivityIndicator size={iconStyles.size} color={iconStyles.color} />
+        </View>
+      ) : (
+        <Text
+          style={{
+            ...textStyles,
+          }}
+          numberOfLines={1}>
+          {renderIconBtn
+            ? renderIconBtn({
+                color: iconStyles.color || colors.white,
+                size: iconStyles.size,
+              })
+            : label || children}
+        </Text>
+      )}
+      {endIcon && !renderIconBtn && (
         <View>
           {typeof endIcon === 'function'
             ? endIcon({

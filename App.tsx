@@ -4,6 +4,7 @@ import Button from './src/components/common/Button';
 import { createTheme, ThemeProvider } from './src/theme/ThemeProvider';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import TextInput from './src/components/common/TextInput';
+import { View } from 'react-native';
 // import { View } from 'react-native';
 
 const App = () => {
@@ -73,6 +74,25 @@ const App = () => {
         <Button variant="outlined" onPress={() => console.log('Pressed')}>
           SIGN UP
         </Button>
+        <View
+          style={{
+            flexDirection: 'row',
+          }}>
+          <Button
+            renderIconBtn={({ color, size }) => (
+              <AntDesign name="google" size={size} color={color} />
+            )}
+            variant="outlined"
+            onPress={() => console.log('Pressed')}
+          />
+          <Button
+            renderIconBtn={({ color, size }) => (
+              <AntDesign name="twitter" size={size} color={color} />
+            )}
+            variant="outlined"
+            onPress={() => console.log('Pressed')}
+          />
+        </View>
       </Screen>
     </ThemeProvider>
   );

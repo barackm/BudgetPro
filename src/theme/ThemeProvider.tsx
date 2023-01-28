@@ -75,7 +75,7 @@ const palette = {
 
 const ButtonRoot = {
   borderRadius: metrics.moderateScale(12),
-  paddingHorizontal: metrics.moderateScale(20),
+  paddingHorizontal: metrics.moderateScale(5),
   display: 'flex',
   alignItems: 'center',
   height: metrics.moderateScale(36),
@@ -84,7 +84,6 @@ const ButtonRoot = {
   color: colors.textLight,
   borderWidth: metrics.moderateScale(1.1),
   marginVertical: metrics.moderateScale(5),
-  // flex: 1,
 };
 
 const defaultTheme: ITheme = {

@@ -12,6 +12,10 @@ export interface IButton {
   children?: React.ReactNode;
   loading?: boolean;
   autoWidth?: boolean;
+  renderIconBtn?: ({
+    color,
+    size,
+  }: IconProps) => React.ReactNode | React.ReactNode;
 }
 
 export type IconProps = {
