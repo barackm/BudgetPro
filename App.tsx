@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from './src/theme/ThemeProvider';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import TextInput from './src/components/common/TextInput';
 import { View } from 'react-native';
+import Switch from './src/components/common/Switch';
 // import { View } from 'react-native';
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
   //   password: '',
   // });
   const [search, setSearch] = React.useState('');
-
+  const [swiched, setSwitched] = React.useState(false);
   const theme = createTheme({
     palette: {
       primary: {
@@ -60,24 +61,22 @@ const App = () => {
             <AntDesign name="lock" size={size} color={color} />
           )}
         />
-        {/* <TextInput
+        <TextInput
           placeholder="Enter message"
           label="Message"
           numberOfLines={10}
           multiline
+          name="message"
           onChangeText={(text: string) => console.log(text)}
           // error="Invalid password"
-        /> */}
+        />
         <Button variant="contained" onPress={() => console.log('Pressed')}>
           LOGIN
         </Button>
         <Button variant="outlined" onPress={() => console.log('Pressed')}>
           SIGN UP
         </Button>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
+        <View>
           <Button
             renderIconBtn={({ color, size }) => (
               <AntDesign name="google" size={size} color={color} />
@@ -94,6 +93,7 @@ const App = () => {
             // loading
           />
         </View>
+        <Switch value={swiched} onValueChange={setSwitched} />
       </Screen>
     </ThemeProvider>
   );

@@ -145,5 +145,28 @@ const defaultTheme: ITheme = {
         ...fonts.defaultTextStyle,
       },
     },
+    Switch: {
+      root: {
+        width: metrics.moderateScale(40),
+        height: metrics.moderateScale(22),
+        borderRadius: metrics.moderateScale(30),
+        justifyContent: 'center',
+        backgroundColor: colors.light,
+      },
+      circle: {
+        width: metrics.moderateScale(18),
+        height: metrics.moderateScale(18),
+        borderRadius: metrics.moderateScale(30),
+        backgroundColor: 'white',
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: metrics.moderateScale(2),
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: metrics.moderateScale(2.5),
+        elevation: metrics.moderateScale(4),
+      },
+    },
   },
 };

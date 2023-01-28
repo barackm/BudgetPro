@@ -8,6 +8,7 @@ const textInverted = '#ffffff';
 const white = '#ffffff';
 const dark = '#000000';
 const error = '#ff5555';
+const light = '#F2F5F7';
 
 export const colors = {
   primary,
@@ -33,4 +34,5 @@ export const colors = {
   errorLight: Color(error).lighten(0.2).hex(),
   errorDark: Color(error).darken(0.2).hex(),
   eroorVariant: Color(error).rotate(20).hex(),
+  light,
 };
