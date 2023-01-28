@@ -31,6 +31,7 @@ const TextInput: React.FC<ITextInput> = props => {
     secureTextEntry,
     style = {},
     value,
+    isSearch,
   } = props;
   const [shouldSecureTextEntry, setShouldSecureTextEntry] =
     useState<boolean>(false);
@@ -78,18 +79,27 @@ const TextInput: React.FC<ITextInput> = props => {
           ...TextInputStyles.inputContainer,
           ...inputContainerStyles,
         }}>
-        {startIcon && (
+        {(startIcon || isSearch) && (
           <View
             style={{
               ...styles.iconContainer,
               ...styles.startIcon,
             }}>
-            {typeof startIcon === 'function'
-              ? startIcon({
-                  size: iconStyles.size,
-                  color: iconStyles.color || 'black',
-                })
-              : startIcon}
+            {isSearch ? (
+              <Ionicons
+                name="ios-search-outline"
+                size={iconStyles.size}
+                color={iconStyles.color}
+              />
+            ) : typeof startIcon === 'function' ? (
+              startIcon({
+                size: iconStyles.size,
+                color: iconStyles.color || 'black',
+              })
+            ) : (
+              startIcon
+            )}
+            {}
           </View>
         )}
 
@@ -134,11 +144,29 @@ const TextInput: React.FC<ITextInput> = props => {
             )}
           </View>
         )}
-        {secureTextEntry && (
+        {(secureTextEntry || isSearch) && (
           <TouchableOpacity
             disabled={disabled}
-            onPress={() => setShouldSecureTextEntry((prev: boolean) => !prev)}>
-            {shouldSecureTextEntry ? (
+            onPress={() => {
+              if (isSearch) {
+                onChangeText && onChangeText('');
+                return;
+              }
+              setShouldSecureTextEntry((prev: boolean) => !prev);
+            }}>
+            {isSearch ? (
+              <>
+                {value && value.trim().length > 0 ? (
+                  <Ionicons
+                    name="ios-close-outline"
+                    size={iconStyles.size}
+                    color={iconStyles.color}
+                  />
+                ) : (
+                  ''
+                )}
+              </>
+            ) : shouldSecureTextEntry ? (
               <Ionicons
                 name="ios-eye-off-outline"
                 size={iconStyles.size}

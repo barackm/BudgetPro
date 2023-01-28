@@ -7,6 +7,12 @@ import TextInput from './src/components/common/TextInput';
 // import { View } from 'react-native';
 
 const App = () => {
+  // const [loginData, setLoginData] = React.useState({
+  //   email: '',
+  //   password: '',
+  // });
+  const [search, setSearch] = React.useState('');
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -31,6 +37,13 @@ const App = () => {
           )}
           placeholder="Enter Email"
           label="Email"
+          onChangeText={(text: string) => console.log(text)}
+        />
+        <TextInput
+          placeholder="Search..."
+          onChangeText={setSearch}
+          isSearch
+          value={search}
         />
         <TextInput
           placeholder="Enter Password"
@@ -38,17 +51,19 @@ const App = () => {
           label="Password"
           // error="Invalid password"
           // disabled
+          onChangeText={(text: string) => console.log(text)}
           startIcon={({ color, size }) => (
             <AntDesign name="lock" size={size} color={color} />
           )}
         />
-        <TextInput
+        {/* <TextInput
           placeholder="Enter message"
           label="Message"
           numberOfLines={10}
           multiline
+          onChangeText={(text: string) => console.log(text)}
           // error="Invalid password"
-        />
+        /> */}
         <Button variant="contained" onPress={() => console.log('Pressed')}>
           LOGIN
         </Button>

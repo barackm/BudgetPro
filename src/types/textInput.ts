@@ -8,7 +8,7 @@ export interface ITextInput {
   error?: string;
   color?: 'primary' | 'secondary' | 'default';
   disabled?: boolean;
-  onChangeText?: (text: string) => void;
+  onChangeText: (text: string) => void;
   value?: string;
   onBlur?: () => void;
   onFocus?: () => void;
@@ -17,4 +17,5 @@ export interface ITextInput {
   multiline?: boolean;
   numberOfLines?: number;
   style?: any;
+  isSearch?: boolean;
 }
