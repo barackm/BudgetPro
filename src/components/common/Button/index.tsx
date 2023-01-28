@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { useButtonVariantBasedStyles } from '../../../hooks/useButtonVariantBasedStyles';
+import useTheme from '../../../hooks/useTheme';
 import { colors } from '../../../theme';
 import { IButton } from '../../../types/button';
 
@@ -18,6 +19,10 @@ const Button: React.FC<IButton> = props => {
     color = 'primary',
     disabled = false,
   } = props;
+  const theme = useTheme();
+  const { components } = theme;
+  const { Button: ButtonStyles } = components;
+
   const { buttonStyles, textStyles, iconStyles } = useButtonVariantBasedStyles({
     variant,
     color: disabled ? 'disabled' : color,
@@ -34,6 +39,8 @@ const Button: React.FC<IButton> = props => {
       }}
       disabled={disabled || loading}
       style={{
+        ...ButtonStyles[variant],
+        ...ButtonStyles.root,
         ...buttonStyles,
       }}>
       {(startIcon || loading) && (

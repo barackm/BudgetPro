@@ -15,7 +15,7 @@ const App = () => {
     components: {
       Button: {
         root: {
-          height: metrics.moderateScale(500),
+          height: metrics.moderateScale(36),
         },
       },
     },

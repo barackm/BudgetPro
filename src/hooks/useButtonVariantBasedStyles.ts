@@ -21,7 +21,6 @@ export const useButtonVariantBasedStyles = ({
 
   const cases = {
     [EButtonVariant.outlined]: {
-      ...ButtonStyles.outlined,
       backgroundColor: 'transparent',
       color: palette[color as keyof typeof palette]?.contrastText,
       borderColor: disabled
@@ -30,7 +29,6 @@ export const useButtonVariantBasedStyles = ({
       opacity: loading ? 0.8 : 1,
     },
     [EButtonVariant.contained]: {
-      ...ButtonStyles.contained,
       backgroundColor: disabled
         ? palette[color as keyof typeof palette]?.light
         : palette[color as keyof typeof palette]?.main,
@@ -39,7 +37,6 @@ export const useButtonVariantBasedStyles = ({
       opacity: loading ? 0.8 : 1,
     },
     [EButtonVariant.text]: {
-      ...ButtonStyles.text,
       backgroundColor: 'transparent',
       opacity: loading ? 0.8 : 1,
     },
