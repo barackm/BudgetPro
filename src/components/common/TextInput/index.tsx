@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {
-  Text,
-  View,
-  TextInput as RNTextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { Text, View, TextInput as RNTextInput } from 'react-native';
 import { ITextInput } from '../../../types/textInput';
-import { getIconSize } from '../../../utlis/icons';
 import useInputStyles from '../../../hooks/useInputStyles';
 import useTheme from '../../../hooks/useTheme';
-import styles from './styles';
+import StartIcons from './StartIcons';
+import EndIcons from './EndIcons';
+import SecureTextControls from './SecureTextControls';
 
 const TextInput: React.FC<ITextInput> = props => {
   const {
@@ -32,6 +26,9 @@ const TextInput: React.FC<ITextInput> = props => {
     style = {},
     value,
     isSearch,
+    autoCorrect = true,
+    autoCapitalize = 'sentences',
+    autoComplete = 'off',
   } = props;
   const [shouldSecureTextEntry, setShouldSecureTextEntry] =
     useState<boolean>(false);
@@ -79,30 +76,11 @@ const TextInput: React.FC<ITextInput> = props => {
           ...TextInputStyles.inputContainer,
           ...inputContainerStyles,
         }}>
-        {(startIcon || isSearch) && (
-          <View
-            style={{
-              ...styles.iconContainer,
-              ...styles.startIcon,
-            }}>
-            {isSearch ? (
-              <Ionicons
-                name="ios-search-outline"
-                size={iconStyles.size}
-                color={iconStyles.color}
-              />
-            ) : typeof startIcon === 'function' ? (
-              startIcon({
-                size: iconStyles.size,
-                color: iconStyles.color || 'black',
-              })
-            ) : (
-              startIcon
-            )}
-            {}
-          </View>
-        )}
-
+        <StartIcons
+          iconStyles={iconStyles}
+          isSearch={isSearch}
+          startIcon={startIcon}
+        />
         <RNTextInput
           onChangeText={onChangeText}
           onBlur={() => {
@@ -124,63 +102,28 @@ const TextInput: React.FC<ITextInput> = props => {
           multiline={multiline}
           numberOfLines={numberOfLines}
           editable={!disabled}
+          autoCapitalize={autoCapitalize}
+          //   @ts-ignore
+          autoComplete={autoComplete}
+          autoCorrect={autoCorrect}
         />
 
-        {(endIcon || error) && (
-          <View style={styles.iconContainer}>
-            {error ? (
-              <MaterialIcons
-                name="error-outline"
-                size={iconStyles.size}
-                color={errorMessageStyles.color}
-              />
-            ) : typeof endIcon === 'function' ? (
-              endIcon({
-                size: getIconSize(),
-                color: 'black',
-              })
-            ) : (
-              endIcon
-            )}
-          </View>
-        )}
-        {(secureTextEntry || isSearch) && (
-          <TouchableOpacity
-            disabled={disabled}
-            onPress={() => {
-              if (isSearch) {
-                onChangeText && onChangeText('');
-                return;
-              }
-              setShouldSecureTextEntry((prev: boolean) => !prev);
-            }}>
-            {isSearch ? (
-              <>
-                {value && value.trim().length > 0 ? (
-                  <Ionicons
-                    name="ios-close-outline"
-                    size={iconStyles.size}
-                    color={iconStyles.color}
-                  />
-                ) : (
-                  ''
-                )}
-              </>
-            ) : shouldSecureTextEntry ? (
-              <Ionicons
-                name="ios-eye-off-outline"
-                size={iconStyles.size}
-                color={iconStyles.color}
-              />
-            ) : (
-              <Ionicons
-                name="ios-eye-outline"
-                size={iconStyles.size}
-                color={iconStyles.color}
-              />
-            )}
-          </TouchableOpacity>
-        )}
+        <EndIcons
+          endIcon={endIcon}
+          error={error}
+          errorMessageStyles={errorMessageStyles}
+          iconStyles={iconStyles}
+        />
+        <SecureTextControls
+          iconStyles={iconStyles}
+          onShouldSecureTextEntryChange={setShouldSecureTextEntry}
+          shouldSecureTextEntry={shouldSecureTextEntry}
+          disabled={disabled}
+          isSearch={isSearch}
+          onChangeText={onChangeText}
+          secureTextEntry={secureTextEntry}
+          value={value}
+        />
       </View>
       {error && (
         <Text

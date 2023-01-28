@@ -38,17 +38,20 @@ const App = () => {
           placeholder="Enter Email"
           label="Email"
           onChangeText={(text: string) => console.log(text)}
+          name="email"
         />
         <TextInput
           placeholder="Search..."
           onChangeText={setSearch}
           isSearch
           value={search}
+          name="search"
         />
         <TextInput
           placeholder="Enter Password"
           secureTextEntry
           label="Password"
+          name="password"
           // error="Invalid password"
           // disabled
           onChangeText={(text: string) => console.log(text)}

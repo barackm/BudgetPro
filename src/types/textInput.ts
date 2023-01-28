@@ -18,4 +18,8 @@ export interface ITextInput {
   numberOfLines?: number;
   style?: any;
   isSearch?: boolean;
+  name: string;
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  autoComplete?: 'off' | 'on';
+  autoCorrect?: boolean;
 }
