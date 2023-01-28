@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   SafeAreaView,
   StatusBar,
@@ -5,14 +7,14 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {metrics} from '../../theme';
+import { metrics } from '../../theme';
 
 interface Props {
   children: React.ReactNode;
   header?: string;
 }
 
-export function Screen({children}: Props) {
+export function Screen({ children }: Props) {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (

@@ -10,4 +10,11 @@ export interface IButton {
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   children?: React.ReactNode;
+  loading?: boolean;
+}
+
+export enum ButtonVariant {
+  outlined = 'outlined',
+  contained = 'contained',
+  text = 'text',
 }

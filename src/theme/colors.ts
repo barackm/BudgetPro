@@ -1,24 +1,3 @@
-// export const colors = {
-//   primary: '#6b4eff',
-//   primaryLight: '#9990ff',
-//   primaryDarkest: '#5538ee',
-//   primaryLighter: '#c6c4ff',
-//   primaryLightest: '#e7e7ff',
-//   disabled: '#e3e5e5',
-//   disabledText: '#b9b9b9',
-//   secondary: '#e7e7ff',
-//   secondaryDark: '#c6c4ff',
-//   dark: '#000000',
-//   darkLight: '#333333',
-//   darkLighter: '#666666',
-//   darkLightest: '#999999',
-//   default: '#ffffff',
-//   light: '#ffffff',
-//   lightDark: '#f2f2f2',
-//   lightDarker: '#e6e6e6',
-//   lightDarkest: '#cccccc',
-// };
-
 import Color from 'color';
 const primary = '#5538ee';
 const secondary = '#e7e7ff';
@@ -36,8 +15,10 @@ export const colors = {
   primaryVariant: Color(primary).rotate(20).hex(),
   primaryVariantLight: Color(primary).rotate(20).lighten(0.2).hex(),
   primaryVariantDark: Color(primary).rotate(20).darken(0.2).hex(),
+  secondary,
   secondaryLight: Color(secondary).lighten(0.2).hex(),
   secondaryDark: Color(secondary).darken(0.2).hex(),
+  secondaryVariant: Color(secondary).rotate(20).hex(),
   disabled,
   text,
   textLight,

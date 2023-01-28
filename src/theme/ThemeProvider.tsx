@@ -1,14 +1,16 @@
-import React, {createContext} from 'react';
+import React, { createContext } from 'react';
 import _ from 'lodash';
+import { metrics } from './metrics';
 
-import {ITheme} from '../types/theme';
-import {colors} from './colors';
+import { ITheme } from '../types/theme';
+import { colors } from './colors';
+import { fonts } from './fonts';
 
 interface IThemeContext {
   theme: ITheme;
 }
 
-const ThemeContext = createContext<IThemeContext>({theme: {}});
+export const ThemeContext = createContext<IThemeContext>({ theme: {} });
 
 interface IThemeProviderProps {
   theme?: ITheme;
@@ -16,9 +18,9 @@ interface IThemeProviderProps {
 }
 
 export const ThemeProvider = (props: IThemeProviderProps) => {
-  const {theme, children} = props;
+  const { theme, children } = props;
   return (
-    <ThemeContext.Provider value={{theme: createTheme(theme)}}>
+    <ThemeContext.Provider value={{ theme: createTheme(theme) }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -43,21 +45,55 @@ export const createTheme = (customTheme?: ITheme) => {
   return _theme;
 };
 
-const defaultTheme: ITheme = {
-  palette: {
-    primary: {
-      main: colors.primary,
-      light: colors.primaryLight,
-      dark: colors.primaryDark,
-      contrastText: colors.white,
-    },
+const palette = {
+  primary: {
+    main: colors.primary,
+    light: colors.primaryLight,
+    dark: colors.primaryDark,
+    contrastText: colors.white,
   },
 };
 
-export const useTheme = () => {
-  const context = React.useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context.theme;
+const ButtonRoot = {
+  borderRadius: metrics.moderateScale(8),
+  paddingHorizontal: metrics.moderateScale(20),
+  display: 'flex',
+  alignItems: 'center',
+  height: metrics.moderateScale(34),
+  justifyContent: 'center',
+  flexDirection: 'row',
+  color: colors.textLight,
+  borderWidth: metrics.moderateScale(1.5),
+};
+
+const defaultTheme: ITheme = {
+  palette,
+  components: {
+    Button: {
+      root: ButtonRoot,
+      outlined: {
+        ...ButtonRoot,
+        backgroundColor: 'transparent',
+        borderWidth: metrics.moderateScale(1.5),
+        borderColor: 'transparent',
+      },
+
+      contained: {
+        ...ButtonRoot,
+      },
+
+      text: {
+        ...ButtonRoot,
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+      },
+
+      label: {
+        color: colors.white,
+        fontSize: metrics.moderateScale(12),
+        fontWeight: fonts.subHeading.fontWeight,
+        textTransform: 'capitalize',
+      },
+    },
+  },
 };

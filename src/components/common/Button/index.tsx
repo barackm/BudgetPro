@@ -1,14 +1,40 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {useTheme} from '../../../theme/ThemeProvider';
-import {IButton} from '../../../types/button';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { useButtonVariantBasedStyles } from '../../../hooks/useButtonVariantBasedStyles';
+import { IButton } from '../../../types/button';
 
 const Button: React.FC<IButton> = props => {
-  const {children, onPress} = props;
-  const theme = useTheme();
-  const {palette} = theme;
-  console.log('palette', palette);
-  return <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>;
+  const {
+    children,
+    onPress,
+    startIcon,
+    label,
+    endIcon,
+    loading,
+    variant = 'contained',
+    color = 'primary',
+  } = props;
+  const { buttonStyles, textStyles } = useButtonVariantBasedStyles(
+    variant,
+    color,
+  );
+
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={{
+        ...buttonStyles,
+      }}>
+      {(startIcon || loading) && <View>{startIcon}</View>}
+      <Text
+        style={{
+          ...textStyles,
+        }}>
+        {label || children}
+      </Text>
+      {endIcon && <View>{endIcon}</View>}
+    </TouchableOpacity>
+  );
 };
 
 export default Button;

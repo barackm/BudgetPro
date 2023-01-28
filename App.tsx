@@ -1,15 +1,16 @@
 import React from 'react';
-import {Screen} from './src/components/Screen/Screen';
+import { Screen } from './src/components/Screen/Screen';
 import Button from './src/components/common/Button';
-import {ThemeProvider} from './src/theme/ThemeProvider';
-import {Text} from 'react-native';
+import { createTheme, ThemeProvider } from './src/theme/ThemeProvider';
 
 const App = () => {
+  const theme = createTheme({});
+
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <Screen>
-        <Button onPress={() => console.log('Pressed')}>
-          <Text>Content</Text>
+        <Button variant="outlined" onPress={() => console.log('Pressed')}>
+          Content
         </Button>
       </Screen>
     </ThemeProvider>

@@ -1,6 +1,6 @@
-import {Dimensions, PixelRatio, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
-const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 const scale = screenWidth / 360;
 
 export const metrics = {

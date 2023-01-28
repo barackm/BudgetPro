@@ -7,11 +7,12 @@ export interface ITheme {
     info?: Icolor;
     success?: Icolor;
   };
+  components?: any;
 }
 
 export interface Icolor {
-  main: string;
-  contrastText: string;
-  light: string;
-  dark: string;
+  main?: string;
+  contrastText?: string;
+  light?: string;
+  dark?: string;
 }

@@ -1,6 +1,6 @@
-import {Platform, StyleSheet} from 'react-native';
-import {colors} from './colors';
-import {metrics} from './metrics';
+import { Platform, StyleSheet } from 'react-native';
+import { colors } from './colors';
+import { metrics } from './metrics';
 
 export const fonts = StyleSheet.create({
   heading: {
@@ -10,7 +10,7 @@ export const fonts = StyleSheet.create({
       ios: 'Helvetica Neue',
       android: 'Roboto',
     }),
-    color: colors.darkLight,
+    color: colors.dark,
   },
 
   subHeading: {
@@ -20,7 +20,7 @@ export const fonts = StyleSheet.create({
       ios: 'Helvetica Neue',
       android: 'Roboto',
     }),
-    color: colors.darkLight,
+    color: colors.dark,
   },
   body: {
     fontSize: metrics.moderateScale(14),
@@ -29,7 +29,7 @@ export const fonts = StyleSheet.create({
       ios: 'Helvetica Neue',
       android: 'Roboto',
     }),
-    color: colors.darkLight,
+    color: colors.dark,
   },
   caption: {
     fontSize: metrics.moderateScale(12),
@@ -38,7 +38,7 @@ export const fonts = StyleSheet.create({
       ios: 'Helvetica Neue',
       android: 'Roboto',
     }),
-    color: colors.darkLighter,
+    color: colors.dark,
   },
 
   bold: {
