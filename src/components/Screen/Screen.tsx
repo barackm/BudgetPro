@@ -12,13 +12,14 @@ import { metrics } from '../../theme';
 interface Props {
   children: React.ReactNode;
   header?: string;
+  style?: any;
 }
 
-export function Screen({ children }: Props) {
+const Screen: React.FC<Props> = ({ children, style }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <View style={styles.main}>
+    <View style={[styles.main, style]}>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -28,12 +29,14 @@ export function Screen({ children }: Props) {
       </SafeAreaView>
     </View>
   );
-}
+};
+
+export default Screen;
 
 const styles = StyleSheet.create({
   main: {
-    paddingHorizontal: metrics.horizontalScale(10),
-    paddingVertical: metrics.moderateScale(10),
+    paddingHorizontal: metrics.horizontalScale(20),
+    paddingVertical: metrics.moderateScale(20),
     flex: 1,
   },
   safeArea: {

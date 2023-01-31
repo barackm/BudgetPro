@@ -39,6 +39,7 @@ export const useButtonVariantBasedStyles = ({
     [EButtonVariant.text]: {
       backgroundColor: 'transparent',
       opacity: loading ? 0.8 : 1,
+      borderColor: 'transparent',
     },
   };
 
@@ -64,7 +65,7 @@ export const useButtonVariantBasedStyles = ({
     : palette[color as keyof typeof palette]?.main || colors.primary;
 
   return {
-    buttonStyles: cases[variant as keyof typeof cases] || {},
+    buttonStyles: { ...(cases[variant as keyof typeof cases] || {}) },
     textStyles: textStylesCases[variant as keyof typeof textStylesCases] || {},
     iconStyles: {
       color: iconColor,

@@ -5,6 +5,7 @@ import { metrics } from './metrics';
 import { ITheme } from '../types/theme';
 import { colors } from './colors';
 import { fonts } from './fonts';
+import { shadow } from './utlis';
 
 interface IThemeContext {
   theme: ITheme;
@@ -75,7 +76,7 @@ const palette = {
 
 const ButtonRoot = {
   borderRadius: metrics.moderateScale(12),
-  paddingHorizontal: metrics.moderateScale(5),
+  paddingHorizontal: metrics.moderateScale(8),
   display: 'flex',
   alignItems: 'center',
   height: metrics.moderateScale(36),
@@ -84,6 +85,7 @@ const ButtonRoot = {
   color: colors.textLight,
   borderWidth: metrics.moderateScale(1.1),
   marginVertical: metrics.moderateScale(5),
+  ...shadow,
 };
 
 const defaultTheme: ITheme = {
@@ -157,15 +159,9 @@ const defaultTheme: ITheme = {
         width: metrics.moderateScale(18),
         height: metrics.moderateScale(18),
         borderRadius: metrics.moderateScale(30),
-        backgroundColor: 'white',
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 0,
-          height: metrics.moderateScale(2),
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: metrics.moderateScale(2.5),
-        elevation: metrics.moderateScale(4),
+        backgroundColor: colors.white,
+        shadowColor: colors.dark,
+        ...shadow,
       },
     },
   },

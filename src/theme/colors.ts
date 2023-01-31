@@ -35,4 +35,5 @@ export const colors = {
   errorDark: Color(error).darken(0.2).hex(),
   eroorVariant: Color(error).rotate(20).hex(),
   light,
+  line: Color(light).darken(0.1).hex(),
 };

@@ -46,13 +46,12 @@ const Button: React.FC<IButton> = props => {
         ...ButtonStyles[variant],
         ...ButtonStyles.root,
         ...buttonStyles,
-        ...((autoWidth || renderIconBtn) && {
+        ...(autoWidth && {
           alignSelf: 'flex-start',
         }),
-        ...(renderIconBtn &&
-          loading && {
-            paddingHorizontal: metrics.moderateScale(10),
-          }),
+        ...((renderIconBtn || (renderIconBtn && loading)) && {
+          width: metrics.moderateScale(40),
+        }),
         ...stylesProp,
       }}>
       {(startIcon || loading) && !renderIconBtn && (
