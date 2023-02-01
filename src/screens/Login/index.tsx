@@ -11,7 +11,11 @@ import styles from './styles';
 import { IconProps } from '../../types/button';
 import Screen from '../../components/Screen/Screen';
 
-const LoginScreen: React.FC = () => {
+interface LoginScreenProps {
+  navigation: any;
+}
+
+const LoginScreen: React.FC<LoginScreenProps> = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
