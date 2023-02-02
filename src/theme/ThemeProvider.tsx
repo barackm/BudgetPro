@@ -75,11 +75,11 @@ const palette = {
 };
 
 const ButtonRoot = {
-  borderRadius: metrics.moderateScale(12),
+  borderRadius: metrics.moderateScale(48),
   paddingHorizontal: metrics.moderateScale(8),
   display: 'flex',
   alignItems: 'center',
-  height: metrics.moderateScale(36),
+  height: metrics.moderateScale(46),
   justifyContent: 'center',
   flexDirection: 'row',
   color: colors.textLight,
@@ -137,8 +137,8 @@ const defaultTheme: ITheme = {
         paddingHorizontal: metrics.moderateScale(12),
         borderWidth: metrics.moderateScale(1.1),
         borderColor: colors.disabled,
-        borderRadius: metrics.moderateScale(12),
-        minHeight: metrics.moderateScale(36),
+        borderRadius: metrics.moderateScale(48),
+        minHeight: metrics.moderateScale(46),
       },
       label: {
         ...fonts.caption,

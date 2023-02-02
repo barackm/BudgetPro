@@ -50,7 +50,7 @@ const Button: React.FC<IButton> = props => {
           alignSelf: 'flex-start',
         }),
         ...((renderIconBtn || (renderIconBtn && loading)) && {
-          width: metrics.moderateScale(40),
+          width: metrics.moderateScale(46),
         }),
         ...stylesProp,
       }}>

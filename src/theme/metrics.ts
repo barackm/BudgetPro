@@ -16,6 +16,6 @@ export const metrics = {
   scale,
   verticalScale: (size: number) => size * scale,
   horizontalScale: (size: number) => size * scale,
-  moderateScale: (size: number, factor = 0.5) =>
-    size + (scale - 1) * size * factor,
+  moderateScale: (size: number, factor = 0.8) =>
+    screenWidth / screenHeight > 1.6 ? size * factor : size,
 };

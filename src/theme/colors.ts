@@ -1,6 +1,6 @@
 import Color from 'color';
-const primary = '#5538ee';
-const secondary = '#e7e7ff';
+const primary = '#3f51b5';
+const secondary = '#2FF7DF';
 const disabled = '#c1c4c9';
 const text = '#333333';
 const textLight = '#777777';
@@ -36,4 +36,6 @@ export const colors = {
   eroorVariant: Color(error).rotate(20).hex(),
   light,
   line: Color(light).darken(0.1).hex(),
+  grayMain: '#9EA1AE',
+  none: 'none',
 };

@@ -1,10 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { colors, metrics } from '../../theme';
-import { Dimensions } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
-const isTablet =
-  width > metrics.moderateScale(600) || height > metrics.moderateScale(600);
 
 const styles = StyleSheet.create({
   keyboardAvoidingView: {

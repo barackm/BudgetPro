@@ -1,22 +1,32 @@
 import React from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from '../screens/Dashboard/Dashboard';
+import { colors, metrics } from '../theme';
+import BottomTabButton from '../components/BottomTabButton';
+import HomeIcon from '../components/svgs/HomeIcon';
+import WalletIcon from '../components/svgs/WalletIcon';
+import GraphIcon from '../components/svgs/GraphIcon';
+import UserIcon from '../components/svgs/UserIcon';
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator: React.FC = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      initialRouteName="Dashboard"
+      screenOptions={{
+        tabBarActiveTintColor: colors.primary,
+        // increase the height of the tab bar
+        tabBarStyle: { height: metrics.moderateScale(90) },
+        tabBarLabelStyle: { display: 'none' },
+      }}>
       <Tab.Screen
         name="Dashboard"
         component={Dashboard}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="dashboard" color={color} size={size} />
+          tabBarIcon: ({ size, focused, color }) => (
+            <HomeIcon size={size} focused={focused} color={color} />
           ),
         }}
       />
@@ -24,8 +34,8 @@ const AppNavigator: React.FC = () => {
         name="Transactions"
         component={Dashboard}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="money" color={color} size={size} />
+          tabBarIcon: ({ size, focused, color }) => (
+            <WalletIcon color={color} focused={focused} size={size} />
           ),
         }}
       />
@@ -35,7 +45,7 @@ const AppNavigator: React.FC = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="pie-chart" color={color} size={size} />
+            <BottomTabButton color={color} size={size} />
           ),
         }}
       />
@@ -43,17 +53,17 @@ const AppNavigator: React.FC = () => {
         name="Investments"
         component={Dashboard}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="line-chart" color={color} size={size} />
+          tabBarIcon: ({ size, color, focused }) => (
+            <GraphIcon size={size} color={color} focused={focused} />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="More"
         component={Dashboard}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" color={color} size={size} />
+          tabBarIcon: ({ size, color, focused }) => (
+            <UserIcon size={size} color={color} focused={focused} />
           ),
         }}
       />
