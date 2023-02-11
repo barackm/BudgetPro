@@ -20,7 +20,7 @@ const AppNavigator: React.FC = () => {
       initialRouteName="Dashboard"
       screenOptions={{
         tabBarActiveTintColor: colors.primary[300],
-        tabBarStyle: { height: metrics.moderateScale(100) },
+        tabBarStyle: { height: metrics.moderateScale(70) },
         tabBarLabelStyle: { display: 'none' },
       }}>
       <Tab.Screen

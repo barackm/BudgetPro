@@ -22,8 +22,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme} colorTheme="dark">
       <NavigationContainer>
-        {/* <AuthNavigator /> */}
-        <AppNavigator />
+        <AuthNavigator />
+        {/* <AppNavigator /> */}
       </NavigationContainer>
     </ThemeProvider>
   );

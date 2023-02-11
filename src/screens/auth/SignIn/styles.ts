@@ -17,9 +17,7 @@ const styles = StyleSheet.create({
   form: {
     marginTop: metrics.moderateScale(24),
     flex: 1,
-  },
-  formInputsContainer: {
-    flex: 1,
+    justifyContent: 'space-between',
   },
   formButtonsContainer: {
     marginBottom: metrics.moderateScale(24),

@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StatusBar } from 'react-native';
+
 import { fonts, metrics, themedColors } from '../../theme';
 import LoginContainer from './SignIn';
 import SignUpContainer from './SignUp';
+const statusBarHeight = StatusBar.currentHeight || 40;
 
 interface AuthContainerProps {
   navigation: any;
@@ -29,6 +32,7 @@ const AuthContainer: any = (props: AuthContainerProps) => {
           showsVerticalScrollIndicator={false}
           style={styles.scrollView}
           bounces={false}>
+          <StatusBar />
           <View style={styles.safeAreaView}>
             <View style={styles.authContentContainer}>
               <View style={styles.headerContentWrapper}>
@@ -102,13 +106,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: metrics.screenHeight,
     justifyContent: 'center',
-    paddingTop: metrics.moderateScale(50),
+    paddingTop: statusBarHeight + metrics.moderateScale(20),
   },
   authContentContainer: {
     flex: 1,
     alignItems: 'center',
     height: '100%',
-    paddingTop: metrics.moderateScale(15),
+    // paddingTop: metrics.moderateScale(15),
   },
   headerContentWrapper: {
     marginHorizontal: metrics.horizontalScale(20),

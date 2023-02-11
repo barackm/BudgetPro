@@ -28,7 +28,7 @@ const SignInContainer: React.FC<SignInContainerProps> = () => {
         onSubmit={(values: any) => console.log(values)}
         validationSchema={validationSchema}
         style={styles.form}>
-        <View style={styles.formInputsContainer}>
+        <View>
           <FormikTextInput
             name="email"
             label="Email"
