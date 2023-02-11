@@ -62,7 +62,7 @@ export const useButtonVariantBasedStyles = ({
     ? palette[color as keyof typeof palette]?.contrastText
     : variant === EButtonVariant.contained
     ? colors.white
-    : palette[color as keyof typeof palette]?.main || colors.primary;
+    : palette[color as keyof typeof palette]?.main || colors.primary.main;
 
   return {
     buttonStyles: { ...(cases[variant as keyof typeof cases] || {}) },

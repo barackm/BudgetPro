@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createTheme, ThemeProvider } from './src/theme/ThemeProvider';
 import AuthNavigator from './src/navigation/AuthNavigator';
-// import AppNavigator from './src/navigation/AppNavigator';
+import AppNavigator from './src/navigation/AppNavigator';
 
 const App = () => {
   const theme = createTheme(
@@ -22,8 +22,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme} colorTheme="dark">
       <NavigationContainer>
-        <AuthNavigator />
-        {/* <AppNavigator /> */}
+        {/* <AuthNavigator /> */}
+        <AppNavigator />
       </NavigationContainer>
     </ThemeProvider>
   );
