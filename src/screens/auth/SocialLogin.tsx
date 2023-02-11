@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { fonts, metrics, themedColors } from '../theme';
+import { fonts, metrics, themedColors } from '../../theme';
 
 interface SocialLoginProps {
   helperText?: string;
@@ -21,13 +21,13 @@ const SocialLogin: React.FC<SocialLoginProps> = props => {
       <View style={styles.socialLoginsContainer}>
         <TouchableOpacity style={styles.socialLoginButton}>
           <Image
-            source={require('../assets/images/icons/google.png')}
+            source={require('../../assets/images/icons/google.png')}
             style={styles.socialLoginButtonIcon}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.socialLoginButton}>
           <Image
-            source={require('../assets/images/icons/facebook.png')}
+            source={require('../../assets/images/icons/facebook.png')}
             style={styles.socialLoginButtonIcon}
           />
         </TouchableOpacity>

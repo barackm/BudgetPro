@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { fonts, metrics, themedColors } from '../theme';
-import LoginContainer from './Login';
+import { fonts, metrics, themedColors } from '../../theme';
+import LoginContainer from './SignIn';
+import SignUpContainer from './SignUp';
 
 interface AuthContainerProps {
   navigation: any;
@@ -70,7 +71,7 @@ const AuthContainer: any = (props: AuthContainerProps) => {
                   {target === 'signin' ? (
                     <LoginContainer />
                   ) : (
-                    <Text>Sign Up</Text>
+                    <SignUpContainer />
                   )}
                 </View>
               </View>

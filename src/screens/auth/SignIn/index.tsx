@@ -1,15 +1,15 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Text, TouchableOpacity, View } from 'react-native';
-import Form from '../../components/form/Form';
+import Form from '../../../components/form/Form';
 import styles from './styles';
-import FormikTextInput from '../../components/form/FormikTextInput';
-import SubmitBtn from '../../components/form/SubmitBtn';
+import FormikTextInput from '../../../components/form/FormikTextInput';
+import SubmitBtn from '../../../components/form/SubmitBtn';
 import SocialLogin from '../SocialLogin';
 
-interface LoginContainerProps {}
+interface SignInContainerProps {}
 
-const LoginContainer: React.FC<LoginContainerProps> = () => {
+const SignInContainer: React.FC<SignInContainerProps> = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
@@ -25,7 +25,7 @@ const LoginContainer: React.FC<LoginContainerProps> = () => {
       </View>
       <Form
         initialValues={{ email: '', password: '' }}
-        onSubmit={values => console.log(values)}
+        onSubmit={(values: any) => console.log(values)}
         validationSchema={validationSchema}
         style={styles.form}>
         <View style={styles.formInputsContainer}>
@@ -48,11 +48,11 @@ const LoginContainer: React.FC<LoginContainerProps> = () => {
           <SocialLogin />
         </View>
         <View style={styles.formButtonsContainer}>
-          <SubmitBtn>Login</SubmitBtn>
+          <SubmitBtn>Sign In</SubmitBtn>
         </View>
       </Form>
     </View>
   );
 };
 
-export default LoginContainer;
+export default SignInContainer;
