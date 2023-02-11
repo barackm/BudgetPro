@@ -22,8 +22,8 @@ const AuthContainer: any = (props: AuthContainerProps) => {
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView
-        behavior="position"
-        keyboardVerticalOffset={metrics.moderateScale(50)}
+        behavior="padding"
+        // keyboardVerticalOffset={metrics.moderateScale(50)}
         style={styles.keyboardAvoidingView}>
         <ScrollView
           showsVerticalScrollIndicator={false}

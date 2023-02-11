@@ -3,9 +3,11 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { fonts, metrics, themedColors } from '../theme';
 
-interface SocialLoginProps {}
+interface SocialLoginProps {
+  helperText?: string;
+}
 const SocialLogin: React.FC<SocialLoginProps> = props => {
-  const {} = props;
+  const { helperText } = props;
   return (
     <View style={styles.socialLoginContainer}>
       <View style={styles.separatorContainer}>
@@ -13,7 +15,9 @@ const SocialLogin: React.FC<SocialLoginProps> = props => {
         <Text style={styles.separatorText}>OR</Text>
         <View style={styles.separatorLine} />
       </View>
-      <Text style={styles.separatorTextHelper}>Login With</Text>
+      <Text style={styles.separatorTextHelper}>
+        {helperText || 'Sign in with your social media account'}
+      </Text>
       <View style={styles.socialLoginsContainer}>
         <TouchableOpacity style={styles.socialLoginButton}>
           <Image
