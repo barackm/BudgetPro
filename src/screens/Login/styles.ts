@@ -1,51 +1,40 @@
 import { StyleSheet } from 'react-native';
-import { colors, metrics } from '../../theme';
+import { fonts, metrics, themedColors } from '../../theme';
 
 const styles = StyleSheet.create({
-  keyboardAvoidingView: {
-    flex: 1,
-  },
-  scrollView: {
-    height: '100%',
-  },
-  separatorLine: {
-    height: 0.6,
-    backgroundColor: colors.line,
-    width: '40%',
-  },
-
   container: {
     flex: 1,
-    height: '100%',
-    alignItems: 'center',
-    // paddingHorizontal: isTablet ? metrics.moderateScale(100) : 0,
+  },
+  header: {},
+  headerTextHeading: {
+    ...fonts.bold,
+  },
+  headerTextSubHeading: {
+    ...fonts.caption,
+    color: themedColors.light.text[200],
+    marginTop: metrics.moderateScale(4),
   },
   form: {
+    marginTop: metrics.moderateScale(24),
     flex: 1,
+  },
+  formInputsContainer: {
+    flex: 1,
+  },
+  formButtonsContainer: {
+    marginBottom: metrics.moderateScale(24),
+  },
+  forgotPasswordContainer: {
     width: '100%',
+    alignItems: 'flex-end',
+    marginVertical: metrics.moderateScale(8),
   },
-  separatorLineContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: metrics.moderateScale(18),
+  forgotPasswordButton: {
+    paddingVertical: metrics.moderateScale(4),
   },
-  socialLoginContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  socialLoginBtn: {
-    paddingHorizontal: metrics.moderateScale(6),
-  },
-  header: {
-    paddingVertical: metrics.moderateScale(40),
-    alignItems: 'center',
-  },
-  headerText: {
-    fontSize: metrics.moderateScale(24),
-  },
-  logo: {
-    width: metrics.moderateScale(150),
-    height: metrics.moderateScale(150),
+  forgotPasswordText: {
+    ...fonts.caption,
+    color: themedColors.light.primary.main,
   },
 });
 

@@ -1,4 +1,4 @@
-import { colors, fonts, metrics } from '../theme';
+import { fonts, getThemeColor, metrics } from '../theme';
 import useTheme from './useTheme';
 
 interface Props {
@@ -19,6 +19,7 @@ const useInputStyles = ({
 }: Props) => {
   const theme = useTheme();
   const { palette = {} } = theme;
+  const colors = getThemeColor('light');
 
   const inputContainerStylesCases = {
     disabled: {
@@ -38,7 +39,7 @@ const useInputStyles = ({
     inputContainerStyles: {
       borderColor: isFocused
         ? palette[color as keyof typeof palette]?.main
-        : colors.disabled,
+        : colors.lightGrey[600],
       ...(disabled && inputContainerStylesCases.disabled),
       ...(error && inputContainerStylesCases.error),
     },

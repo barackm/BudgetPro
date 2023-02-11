@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from '../screens/Dashboard/Dashboard';
-import { colors, metrics } from '../theme';
+import { getThemeColor, metrics } from '../theme';
 import BottomTabButton from '../components/BottomTabButton';
 import HomeIcon from '../components/svgs/HomeIcon';
 import WalletIcon from '../components/svgs/WalletIcon';
@@ -12,13 +12,15 @@ import UserIcon from '../components/svgs/UserIcon';
 const Tab = createBottomTabNavigator();
 
 const AppNavigator: React.FC = () => {
+  const mode = 'light';
+  const colors = getThemeColor(mode);
+
   return (
     <Tab.Navigator
       initialRouteName="Dashboard"
       screenOptions={{
-        tabBarActiveTintColor: colors.primary,
-        // increase the height of the tab bar
-        tabBarStyle: { height: metrics.moderateScale(90) },
+        tabBarActiveTintColor: colors.primary[300],
+        tabBarStyle: { height: metrics.moderateScale(100) },
         tabBarLabelStyle: { display: 'none' },
       }}>
       <Tab.Screen
@@ -26,7 +28,12 @@ const AppNavigator: React.FC = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ size, focused, color }) => (
-            <HomeIcon size={size} focused={focused} color={color} />
+            <HomeIcon
+              colors={colors}
+              size={size}
+              focused={focused}
+              color={color}
+            />
           ),
         }}
       />
@@ -35,7 +42,12 @@ const AppNavigator: React.FC = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ size, focused, color }) => (
-            <WalletIcon color={color} focused={focused} size={size} />
+            <WalletIcon
+              colors={colors}
+              color={color}
+              focused={focused}
+              size={size}
+            />
           ),
         }}
       />
@@ -45,7 +57,7 @@ const AppNavigator: React.FC = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <BottomTabButton color={color} size={size} />
+            <BottomTabButton colors={colors} color={color} size={size} />
           ),
         }}
       />
@@ -54,7 +66,12 @@ const AppNavigator: React.FC = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ size, color, focused }) => (
-            <GraphIcon size={size} color={color} focused={focused} />
+            <GraphIcon
+              colors={colors}
+              size={size}
+              color={color}
+              focused={focused}
+            />
           ),
         }}
       />
@@ -63,7 +80,12 @@ const AppNavigator: React.FC = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ size, color, focused }) => (
-            <UserIcon size={size} color={color} focused={focused} />
+            <UserIcon
+              colors={colors}
+              size={size}
+              color={color}
+              focused={focused}
+            />
           ),
         }}
       />
